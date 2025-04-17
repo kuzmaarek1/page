@@ -40,6 +40,35 @@
         />
       </div>
     </section>
+    <section class="product-controls">
+      <label for="product-count">Ilość produktów na stronę:</label>
+      <select id="product-count">
+        <option value="14" selected>14</option>
+        <option value="20">20</option>
+        <option value="28">28</option>
+        <option value="36">36</option>
+      </select>
+      <section id="product-listing" class="product-listing">
+        <!-- Products will be loaded here -->
+      </section>
+    </section>
+    <!-- Popup -->
+    <div
+      id="productPopUp"
+      class="product-popUp"
+      role="dialog"
+      aria-labelledby="popupProductName"
+      aria-hidden="true"
+    >
+      <div class="popUp-content">
+        <button id="closePopUp" class="close" aria-label="Close Product PopUp">
+          &times;
+        </button>
+        <h2 id="popUpProductName">Product Name</h2>
+        <img id="popUpProductImage" src="" alt="Product Image" />
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
