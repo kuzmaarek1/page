@@ -38,10 +38,54 @@
           alt="Hero Image"
           class="hero-image"
         />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+      </div>
+    </section>
+    <section id="featured-products" class="featured-products">
+      <h6 class="featured-products-title">Featured Products</h6>
+      <h1 class="featured-products-header">Browse featured</h1>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Products will be loaded here dynamically -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-scrollbar"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev custom-swiper-btn">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.37303 12.75L13.0693 18.4462L12 19.5L4.5 12L12 4.5L13.0693 5.55375L7.37303 11.25H19.5V12.75H7.37303Z"
+              fill="#1D1D1D"
+            />
+          </svg>
+        </div>
+        <div class="swiper-button-next custom-swiper-btn">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.627 11.25L10.9307 5.55375L12 4.5L19.5 12L12 19.5L10.9307 18.4462L16.627 12.75H4.5L4.5 11.25H16.627Z"
+              fill="#1D1D1D"
+            />
+          </svg>
+        </div>
       </div>
     </section>
     <section class="product-controls">
-      <label for="product-count">Ilość produktów na stronę:</label>
+      <label for="product-count">Number of products per page:</label>
       <select id="product-count">
         <option value="14" selected>14</option>
         <option value="20">20</option>
@@ -68,7 +112,8 @@
         <img id="popUpProductImage" src="" alt="Product Image" />
       </div>
     </div>
-
-    <script src="script.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script/featured-products-slider.js"></script>
+    <script src="script/product-list.js"></script>
   </body>
 </html>
