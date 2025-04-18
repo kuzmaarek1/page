@@ -85,13 +85,33 @@
       </div>
     </section>
     <section class="product-controls">
-      <label for="product-count">Number of products per page:</label>
-      <select id="product-count">
-        <option value="14" selected>14</option>
-        <option value="20">20</option>
-        <option value="28">28</option>
-        <option value="36">36</option>
-      </select>
+      <div class="product-controls-count">
+        <div class="product-count-container">
+          <span class="product-count-span">Number of products per page </span>
+          <div class="custom-select">
+            <div class="selected-container">
+              <div class="selected">14</div>
+              <svg
+                width="12"
+                height="8"
+                viewBox="0 0 12 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.69976 5.24844L10.2998 0.648437L11.3535 1.70219L5.69976 7.35594L0.0460147 1.70219L1.09976 0.648437L5.69976 5.24844Z"
+                  fill="#1D1D1D"
+                />
+              </svg>
+            </div>
+            <ul class="options">
+              <li class="option active">14</li>
+              <li class="option">24</li>
+              <li class="option">36</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <section id="product-listing" class="product-listing">
         <!-- Products will be loaded here -->
       </section>
@@ -104,12 +124,32 @@
       aria-labelledby="popupProductName"
       aria-hidden="true"
     >
-      <div class="popUp-content">
-        <button id="closePopUp" class="close" aria-label="Close Product PopUp">
-          &times;
+      <div class="popUp-container">
+        <div id="popUpProductId">ID:</div>
+        <button
+          id="closePopUp"
+          class="button-close"
+          aria-label="Close Product PopUp"
+        >
+          <div>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.39994 18.6537L5.34619 17.5999L10.9462 11.9999L5.34619 6.39994L6.39994 5.34619L11.9999 10.9462L17.5999 5.34619L18.6537 6.39994L13.0537 11.9999L18.6537 17.5999L17.5999 18.6537L11.9999 13.0537L6.39994 18.6537Z"
+                fill="#1D1D1D"
+              />
+            </svg>
+          </div>
+          <div>Close</div>
         </button>
-        <h2 id="popUpProductName">Product Name</h2>
-        <img id="popUpProductImage" src="" alt="Product Image" />
+        <div class="popUp-content">
+          <img id="popUpProductImage" src="" alt="Product Image" />
+        </div>
       </div>
     </div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

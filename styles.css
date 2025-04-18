@@ -167,6 +167,18 @@ body {
   position: relative;
 }
 
+.product-list {
+  position: relative;
+  cursor: pointer;
+  width: 441px;
+  height: 441px;
+}
+
+.product-featured {
+  width: 380px;
+  height: 380px;
+}
+
 .product-bestseller,
 .product-limitedEdition {
   text-transform: uppercase;
@@ -259,9 +271,102 @@ body {
   background-color: #f0f0f0;
 }
 
-#product-count {
-  padding: 0.5rem;
-  font-size: 1rem;
+.product-controls-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-count-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-count-span {
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #1d1d1d;
+}
+
+.custom-select {
+  position: relative;
+  width: 65px;
+  font-family: sans-serif;
+  font-size: 15px;
+  user-select: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #1d1d1d;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.selected-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.selected-container:hover {
+  cursor: pointer;
+}
+
+.selected {
+  padding: 8px 0px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  margin-left: 8px;
+  font-size: 10px;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 65.5px;
+  right: 0;
+  background: white;
+  display: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 5;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: 1px solid #eaeae8;
+  border-left: 1px solid #eaeae8;
+  border-right: 1px solid #eaeae8;
+}
+
+.option {
+  padding: 6px 0px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  list-style: none;
+  margin: 0 10px;
+}
+
+.option:not(:last-child) {
+  border-bottom: 1px solid #eaeae8;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
 }
 
 .product img {
@@ -270,10 +375,28 @@ body {
   display: block;
 }
 
+.product-listing {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-id {
+  position: absolute;
+  left: 23px;
+  top: 23px;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
 .product-popUp {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
@@ -283,25 +406,60 @@ body {
   padding-top: 60px;
 }
 
-.popUp-content {
-  background-color: #fff;
-  margin: 5% auto;
+.popUp-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  background-color: #eaeae8;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px;
+  max-width: 840px;
+  max-height: 620px;
 }
 
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+#popUpProductId {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.button-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  text-transform: uppercase;
+  display: flex;
+  gap: 5px;
+  font-size: 13px;
+  background: transparent;
+  border: 0px;
+  outline: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+}
+
+.popUp-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #popUpProductImage {
-  max-width: 100%;
-  height: auto;
+  max-width: 70%;
+  max-height: 70%;
 }
 
 .close:hover,
@@ -309,4 +467,36 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .product-count-container {
+    flex-direction: column;
+  }
+
+  .product-featured {
+    width: 300px;
+    height: 300px;
+  }
+  .product-list {
+    width: 158px;
+    height: 158px;
+  }
+
+  .product-id {
+    left: 13px;
+    top: 13px;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: -0.01em;
+  }
+  .popUp-container,
+  .popUp-content {
+    width: 280px;
+    height: 388px;
+  }
+  #popUpProductImage {
+    max-width: 280px;
+    max-height: 388px;
+  }
 }

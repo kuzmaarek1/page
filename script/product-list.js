@@ -1,10 +1,48 @@
 const productContainer = document.getElementById("product-listing");
-const productCountSelect = document.getElementById("product-count");
+const customSelect = document.querySelector(".custom-select");
+const selected = customSelect.querySelector(".selected");
+const selectedContainer = customSelect.querySelector(".selected-container");
+const optionsContainer = customSelect.querySelector(".options");
+const optionsList = customSelect.querySelectorAll(".option");
 
+let pageSize = parseInt(selected.textContent.trim());
 let pageNumber = 1;
-let pageSize = parseInt(productCountSelect.value);
 let totalPages = Infinity;
 let isLoading = false;
+
+selectedContainer.addEventListener("click", () => {
+  console.log(customSelect.style.border);
+  optionsContainer.style.display =
+    optionsContainer.style.display === "block" ? "none" : "block";
+  selectedContainer.style.borderBottom =
+    selectedContainer.style.borderBottom.includes("1px solid")
+      ? ""
+      : "1px solid #1d1d1d";
+  customSelect.style.border = customSelect.style.border.includes("1px solid")
+    ? ""
+    : "1px solid #eaeae8";
+});
+
+optionsList.forEach((option) => {
+  option.addEventListener("click", () => {
+    selected.innerHTML = `${option.textContent}`;
+
+    optionsList.forEach((opt) => opt.classList.remove("active"));
+    option.classList.add("active");
+
+    optionsContainer.style.display = "none";
+    selectedContainer.style.borderBottom = "";
+    customSelect.style.border = "";
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!customSelect.contains(e.target)) {
+    optionsContainer.style.display = "none";
+    selectedContainer.style.borderBottom = "";
+    customSelect.style.border = "";
+  }
+});
 
 const loadProducts = async () => {
   if (isLoading || pageNumber > totalPages) return;
@@ -29,8 +67,11 @@ const loadProducts = async () => {
     products.forEach((product) => {
       const el = document.createElement("div");
       el.classList.add("product");
+      el.classList.add("product-list");
       el.innerHTML = `
-        <h3>${product.text}</h3>
+        <div class="product-id">Id: ${product.id
+          .toString()
+          .padStart(2, "0")}</div>
         <img src="${product.image}" alt="${product.text}" />
       `;
       el.addEventListener("click", () => openProductPopUp(product));
@@ -47,7 +88,9 @@ const loadProducts = async () => {
 
 const openProductPopUp = (product) => {
   console.log(product);
-  document.getElementById("popUpProductName").innerText = product.id;
+  document.getElementById("popUpProductId").innerText = `ID: ${product.id
+    .toString()
+    .padStart(2, "0")}`;
   document.getElementById("popUpProductImage").src = product.image;
   document.getElementById("productPopUp").setAttribute("aria-hidden", "false");
   document.getElementById("productPopUp").style.display = "block";
@@ -76,12 +119,14 @@ const handleScroll = () => {
   }
 };
 
-productCountSelect.addEventListener("change", () => {
-  pageSize = parseInt(productCountSelect.value);
-  pageNumber = 1;
-  totalPages = Infinity;
-  productContainer.innerHTML = "";
-  loadProducts();
+optionsList.forEach((option) => {
+  option.addEventListener("click", () => {
+    pageSize = parseInt(option.textContent.trim());
+    pageNumber = 1;
+    totalPages = Infinity;
+    productContainer.innerHTML = "";
+    loadProducts();
+  });
 });
 
 loadProducts();

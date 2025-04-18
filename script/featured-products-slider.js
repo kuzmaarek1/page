@@ -65,13 +65,13 @@ const loadFeaturedProducts = async () => {
       grabCursor: true,
       momentumBounce: false,
       speed: 500,
+      spaceBetween: 20,
       breakpoints: {
         0: {
           slidesPerView: 1,
         },
         400: {
           slidesPerView: 2,
-          spaceBetween: 0,
         },
         768: {
           slidesPerView: 3,
