@@ -15,8 +15,19 @@
       <nav class="navigation-bar">
         <a href="#" class="logo-link">
           <img src="./images/logo.png" alt="Logo" class="logo" />
-          <span class="brand-name">idomods &lt;/&gt;</span>
+          <div class="brand-name-container">
+            <div class="brand-name">Forma’sint.</div>
+            <span class="brand-name brand-name-mobile">idomods &lt;/&gt;</span>
+          </div>
         </a>
+        <button class="hamburger-menu" aria-label="Menu">
+          <div class="hamburger-menu-span">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="hamburger-menu-text">Menu</div>
+        </button>
         <ul class="navigation-links">
           <li><a href="#home" class="nav-link">Home</a></li>
           <li>
@@ -31,6 +42,44 @@
           <span class="user-role">Frontend Developer</span>
         </a>
       </nav>
+      <div class="mobile-menu"></div>
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-header">
+          <img
+            src="./images/logo.png"
+            alt="Logo"
+            class="mobile-menu-logo"
+          />
+          <div class="close-menu">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.39994 18.6537L5.34619 17.5999L10.9462 11.9999L5.34619 6.39994L6.39994 5.34619L11.9999 10.9462L17.5999 5.34619L18.6537 6.39994L13.0537 11.9999L18.6537 17.5999L17.5999 18.6537L11.9999 13.0537L6.39994 18.6537Z"
+                fill="#1D1D1D"
+              />
+            </svg>
+            <div class="close-menu-text">Close</div>
+          </div>
+        </div>
+        <ul class="mobile-navigation-links">
+          <li><a href="#home" class="mobile-nav-link">Home</a></li>
+          <li>
+            <a href="#featured-products" class="mobile-nav-link"
+              >Featured products</a
+            >
+          </li>
+          <li>
+            <a href="#product-listing" class="mobile-nav-link"
+              >Product listing</a
+            >
+          </li>
+        </ul>
+      </div>
       <div class="hero-image-container">
         <img src="./images/hero-logo.png" alt="Logo Image" class="hero-logo" />
         <img
@@ -51,9 +100,7 @@
         <div class="swiper-wrapper">
           <!-- Products will be loaded here dynamically -->
         </div>
-        <!-- Add Pagination -->
         <div class="swiper-scrollbar"></div>
-        <!-- Add Navigation -->
         <div class="swiper-button-prev custom-swiper-btn">
           <svg
             width="24"
@@ -180,5 +227,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script/featured-products-slider.js"></script>
     <script src="script/product-list.js"></script>
+    <script src="script/mobile-menu.js"></script>
   </body>
 </html>
