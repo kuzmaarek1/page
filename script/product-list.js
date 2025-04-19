@@ -4,6 +4,7 @@ const selected = customSelect.querySelector(".selected");
 const selectedContainer = customSelect.querySelector(".selected-container");
 const optionsContainer = customSelect.querySelector(".options");
 const optionsList = customSelect.querySelectorAll(".option");
+const advertisement = document.querySelector(".advertisement");
 
 let pageSize = parseInt(selected.textContent.trim());
 let pageNumber = 1;
@@ -15,11 +16,13 @@ selectedContainer.addEventListener("click", () => {
   optionsContainer.style.display =
     optionsContainer.style.display === "block" ? "none" : "block";
   selectedContainer.style.borderBottom =
-    selectedContainer.style.borderBottom.includes("1px solid")
-      ? ""
+    selectedContainer.style.borderBottom.includes("1px solid rgb(29, 29, 29)")
+      ? "1px solid white"
       : "1px solid #1d1d1d";
-  customSelect.style.border = customSelect.style.border.includes("1px solid")
-    ? ""
+  customSelect.style.border = customSelect.style.border.includes(
+    "1px solid rgb(234, 234, 232)"
+  )
+    ? "1px solid white"
     : "1px solid #eaeae8";
 });
 
@@ -124,7 +127,10 @@ optionsList.forEach((option) => {
     pageSize = parseInt(option.textContent.trim());
     pageNumber = 1;
     totalPages = Infinity;
+    const advertisementClone = advertisement.cloneNode(true);
     productContainer.innerHTML = "";
+    productContainer.appendChild(advertisementClone);
+
     loadProducts();
   });
 });
@@ -132,3 +138,15 @@ optionsList.forEach((option) => {
 loadProducts();
 
 window.addEventListener("scroll", handleScroll);
+
+function centerAdvertisement() {
+  const computedStyle = window.getComputedStyle(productContainer);
+  const columnCount = computedStyle
+    .getPropertyValue("grid-template-columns")
+    .split(" ").length;
+  startColumn = Math.floor((columnCount - 2) / 2) + 1;
+  advertisement.style.gridColumn = `${startColumn} / span 2`;
+}
+
+window.addEventListener("load", centerAdvertisement);
+window.addEventListener("resize", centerAdvertisement);
