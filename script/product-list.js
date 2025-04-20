@@ -12,38 +12,21 @@ let totalPages = Infinity;
 let isLoading = false;
 
 selectedContainer.addEventListener("click", () => {
-  console.log(customSelect.style.border);
-  optionsContainer.style.display =
-    optionsContainer.style.display === "block" ? "none" : "block";
-  selectedContainer.style.borderBottom =
-    selectedContainer.style.borderBottom.includes("1px solid rgb(29, 29, 29)")
-      ? "1px solid white"
-      : "1px solid #1d1d1d";
-  customSelect.style.border = customSelect.style.border.includes(
-    "1px solid rgb(234, 234, 232)"
-  )
-    ? "1px solid white"
-    : "1px solid #eaeae8";
+  customSelect.classList.toggle("active");
 });
 
 optionsList.forEach((option) => {
   option.addEventListener("click", () => {
     selected.innerHTML = `${option.textContent}`;
-
     optionsList.forEach((opt) => opt.classList.remove("active"));
     option.classList.add("active");
-
-    optionsContainer.style.display = "none";
-    selectedContainer.style.borderBottom = "";
-    customSelect.style.border = "";
+    customSelect.classList.remove("active");
   });
 });
 
 document.addEventListener("click", (e) => {
   if (!customSelect.contains(e.target)) {
-    optionsContainer.style.display = "none";
-    selectedContainer.style.borderBottom = "";
-    customSelect.style.border = "";
+    customSelect.classList.remove("active");
   }
 });
 
@@ -96,11 +79,11 @@ const openProductPopUp = (product) => {
     .padStart(2, "0")}`;
   document.getElementById("popUpProductImage").src = product.image;
   document.getElementById("productPopUp").setAttribute("aria-hidden", "false");
-  document.getElementById("productPopUp").style.display = "block";
+  document.getElementById("productPopUp").classList.add("active");
 };
 
 const closeProductPopUp = () => {
-  document.getElementById("productPopUp").style.display = "none";
+  document.getElementById("productPopUp").classList.remove("active");
   document.getElementById("productPopUp").setAttribute("aria-hidden", "true");
 };
 

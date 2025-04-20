@@ -11,45 +11,39 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <section class="hero-section">
-      <nav class="navigation-bar">
-        <a href="#" class="logo-link">
-          <img src="./images/logo.png" alt="Logo" class="logo" />
-          <div class="brand-name-container">
-            <div class="brand-name">Forma’sint.</div>
-            <span class="brand-name brand-name-mobile">idomods &lt;/&gt;</span>
-          </div>
-        </a>
-        <button class="hamburger-menu" aria-label="Menu">
-          <div class="hamburger-menu-span">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="hamburger-menu-text">Menu</div>
-        </button>
-        <ul class="navigation-links">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li>
-            <a href="#featured-products" class="nav-link">Featured products</a>
-          </li>
-          <li>
-            <a href="#product-listing" class="nav-link">Product listing</a>
-          </li>
-        </ul>
-        <a href="#" class="user-info">
-          <img src="./images/user-icon.png" alt="User Icon" class="user-icon" />
-          <span class="user-role">Frontend Developer</span>
-        </a>
-      </nav>
+    <nav class="navigation-bar">
+      <a href="#" class="logo-link">
+        <img src="./images/logo.png" alt="Logo" class="logo" />
+        <div class="brand-name-container">
+          <div class="brand-name">Forma’sint.</div>
+          <span class="brand-name brand-name-mobile">idomods &lt;/&gt;</span>
+        </div>
+      </a>
+      <ul class="navigation-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li>
+          <a href="#featured-products" class="nav-link">Featured products</a>
+        </li>
+        <li>
+          <a href="#product-listing" class="nav-link">Product listing</a>
+        </li>
+      </ul>
+      <a href="#" class="user-info">
+        <img src="./images/user-icon.png" alt="User Icon" class="user-icon" />
+        <span class="user-role">Frontend Developer</span>
+      </a>
+      <button class="hamburger-menu" aria-label="Menu">
+        <div class="hamburger-menu-span">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="hamburger-menu-text">Menu</div>
+      </button>
       <div class="mobile-menu"></div>
       <div class="mobile-menu-content">
         <div class="mobile-menu-header">
-          <img
-            src="./images/logo.png"
-            alt="Logo"
-            class="mobile-menu-logo"
-          />
+          <img src="./images/logo.png" alt="Logo" class="mobile-menu-logo" />
           <div class="close-menu">
             <svg
               width="24"
@@ -80,6 +74,8 @@
           </li>
         </ul>
       </div>
+    </nav>
+    <section class="hero-section" id="home">
       <div class="hero-image-container">
         <img src="./images/hero-logo.png" alt="Logo Image" class="hero-logo" />
         <img
@@ -227,6 +223,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script/featured-products-slider.js"></script>
     <script src="script/product-list.js"></script>
-    <script src="script/mobile-menu.js"></script>
+    <script src="script/navigation.js"></script>
   </body>
 </html>
