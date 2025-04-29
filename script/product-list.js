@@ -1,4 +1,4 @@
-const productContainer = document.getElementById("product-listing");
+const productContainer = document.querySelector(".product-listing");
 const customSelect = document.querySelector(".custom-select");
 const selected = customSelect.querySelector(".selected");
 const selectedContainer = customSelect.querySelector(".selected-container");

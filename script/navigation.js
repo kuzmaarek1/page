@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     mobileMenu.classList.toggle("active");
-    document.body.style.overflow = mobileMenu.classList.contains("active")
-      ? "hidden"
-      : "";
   });
 
   closeButton.addEventListener("click", closeMobileMenu);
@@ -60,9 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("scroll", () => {
   let navbar = document.querySelector(".navigation-bar");
-  if (window.scrollY > 10) {
+  if (window.scrollY > 1) {
     navbar.classList.add("sticky");
   } else {
     navbar.classList.remove("sticky");
   }
+});
+
+const logo = document.querySelector(".logo");
+const logoLink = document.querySelector(".logo-link");
+
+logoLink.addEventListener("mouseenter", () => {
+  logo.src = "./images/logo-hover.png";
+});
+
+logoLink.addEventListener("mouseleave", () => {
+  logo.src = "./images/logo.png";
 });
