@@ -64,13 +64,41 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const logo = document.querySelector(".logo");
-const logoLink = document.querySelector(".logo-link");
+const observer = new MutationObserver(() => {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  const hash = window.location.hash;
+  document.documentElement.style.scrollBehavior = "auto";
 
-logoLink.addEventListener("mouseenter", () => {
-  logo.src = "./images/logo-hover.png";
+  window.scrollTo(0, 0);
+  const productHeart = document.querySelector(".product-heart");
+  const productId = document.querySelectorAll(".product-id");
+  const heroPhoto = document.querySelector(".hero-photo");
+  const advertisement = document.querySelector(".advertisement");
+
+  if (!hash) {
+    document.documentElement.style.scrollBehavior = "smooth";
+    observer.disconnect();
+  }
+
+  if (
+    productHeart &&
+    productId.length > 13 &&
+    advertisement &&
+    heroPhoto &&
+    hash
+  ) {
+    const target = document.querySelector(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: "auto" });
+      document.documentElement.style.scrollBehavior = "smooth";
+    }
+    observer.disconnect();
+  }
 });
 
-logoLink.addEventListener("mouseleave", () => {
-  logo.src = "./images/logo.png";
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
 });
